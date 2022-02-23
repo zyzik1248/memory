@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import Board from "./components/board/Board";
 
 const App = () => {
   return (
-    <p className="text-2xl underline">
-    Hello world!
-  </p>
+    <div className="flex h-screen items-center justify-center gap-5">
+        <Board />
+        <Board />
+    </div>
   );
-}
+};
 
 export default App;

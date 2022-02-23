@@ -1,0 +1,1 @@
+export { colors, getColor} from './Colors';
