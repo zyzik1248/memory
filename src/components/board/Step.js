@@ -1,12 +1,11 @@
 import { getColor } from "../../utilis";
 
-const Step = ({ step = 1, color = "green" }) => {
+const Step = ({ step = 1, color = "green", isActive = false }) => {
   return (
     <div
-      className={`${getColor(
-        color,
-        step
-      )} border-[1px] border-gray-500 max-w-[25px] p-0 rounded-full after:content-[''] after:block after:pb-[100%]`}
+      className={`${
+        isActive ? getColor(color, step) : "bg-gray-500"
+      } border-[1px] border-gray-500 max-w-[25px] p-0 rounded-full after:content-[''] after:block after:pb-[100%]`}
     />
   );
 };

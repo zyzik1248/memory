@@ -1,1 +1,2 @@
-export { colors, getColor} from './Colors';
+export { colors, getColor, randColor } from "./colors";
+export { randField } from "./game";

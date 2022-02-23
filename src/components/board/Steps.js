@@ -1,10 +1,18 @@
-import { colors } from "../../utilis";
 import Step from "./Step";
 
-const Steps = () => {
+const Steps = ({ color = "green", step }) => {
   return (
     <div className="grid grid-cols-10">
-      {Array(10).fill("").map((el, index)=><Step color={colors.blue} step={index+1} key={index}/>)}
+      {Array(10)
+        .fill("")
+        .map((el, index) => (
+          <Step
+            color={color}
+            step={index + 1}
+            key={index}
+            isActive={index + 1 <= step}
+          />
+        ))}
     </div>
   );
 };
