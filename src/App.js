@@ -1,9 +1,8 @@
 import React from 'react'
-import './styles/main.css' 
 
 const App = () => {
   return (
-    <p className="text-3xl font-bold underline p-0">
+    <p className="text-2xl underline">
     Hello world!
   </p>
   );
