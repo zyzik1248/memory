@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { randColor, randField } from "../utilis";
-import Board from "./board/Board";
+import ClikableBoard from "./board/ClickableBoard";
+import PreviewBoard from "./board/PreviewBoard";
 
 const Game = () => {
+  const countFields = 16;
+
   const [color, setColor] = useState("");
   const [activeFields, setActiveFields] = useState([]);
-  const [step, setStep] = useState(3);
-  const countFields = 16;
+  const [step, setStep] = useState(1);
+  const [openClickBoard, setOpenClickBoard] = useState(false);
 
   useEffect(() => {
     setColor(randColor());
-    for (let i = 0; i < 3; i++) {
-      addField();
-    }
+    addField();
   }, []);
 
   const addField = () => {
@@ -23,19 +24,38 @@ const Game = () => {
     setActiveFields(list.slice());
   };
 
+  const isLostMove = (id, stepId) => {
+    return id !== activeFields[stepId];
+  };
+
+  const lostMove = () => {
+    setActiveFields(activeFields.slice());
+    setOpenClickBoard(false);
+  };
+
+  const winMove = () => {
+    addField();
+    setStep(step + 1);
+    setOpenClickBoard(false);
+  };
+
   return (
     <div className="flex h-screen items-center justify-center gap-5">
-      <Board
+      <PreviewBoard
+        activeFields={activeFields}
         color={color}
         countFields={countFields}
-        activeFields={activeFields}
         step={step}
+        finishShow={()=>setOpenClickBoard(true)}
       />
-      <Board
-        color={color}
+      <ClikableBoard
         countFields={countFields}
-        activeFields={activeFields}
+        color={color}
+        open={openClickBoard}
         step={step}
+        isLost={isLostMove}
+        lost={lostMove}
+        win={winMove}
       />
     </div>
   );

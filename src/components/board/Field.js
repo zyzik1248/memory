@@ -1,13 +1,19 @@
 import { getColor } from "../../utilis";
 
-const Field = ({ isActive, step = 1, color = "green" }) => {
+const Field = ({id, isActive, step = 1, color = "green", disabled = false, onClick }) => {
+  const handleClick = () =>{
+    onClick && onClick(id)
+  }
+
   return (
-    <div className="border-[1px] p-2 border-gray-500 after:content-[''] after:block after:pb-[100%]">
-      <div
+    <div className="border-[1px] p-2 bg-transparent relative border-gray-500 after:content-[''] after:block after:pb-[100%]">
+      <button
         className={`${
           isActive ? getColor(color, step) : "bg-transparent"
-        } w-full h-full cursor-pointer -rotate-2`}
-      ></div>
+        } absolute w-[calc(100%-1rem)] h-[calc(100%-1rem)] -rotate-2`}
+        disabled={disabled}
+        onClick={handleClick}
+      />
     </div>
   );
 };

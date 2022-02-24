@@ -1,37 +1,16 @@
 import { useEffect } from "react";
-import { useRef } from "react";
 import { useState } from "react";
 import Field from "./Field";
 
 const Fields = ({
-  disable = false,
+  disabled = false,
   color = "green",
   countFields,
-  activeFields=[],
-  step=1
+  activeFields = [],
+  fieldStep = 1,
+  onClick
 }) => {
-  const [intervalId, setIntervalId] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0)
-  let steps = 0
-
-  useEffect(()=>{
-    const intervalId = setInterval(() => {
-      showFields()
-    }, 500);
-    setIntervalId(intervalId);
-    return () => clearInterval(intervalId)
-  }, [])
-
-  const showFields = () =>{
-    steps++
-    if(steps > step){
-      setCurrentStep(0)
-      clearInterval(intervalId)
-    } else {
-      setCurrentStep(currentStep => currentStep + 1);
-    }
-  }
-
+  
   return (
     <div className="grid grid-cols-4 border-[1px] border-gray-500">
       {Array(countFields)
@@ -39,9 +18,12 @@ const Fields = ({
         .map((el, index) => (
           <Field
             key={index}
+            id={index}
             color={color}
-            isActive={currentStep && activeFields[currentStep-1] === index}
-            step={currentStep}
+            isActive={activeFields.find((el) => el === index)}
+            step={fieldStep}
+            disabled={disabled}
+            onClick={onClick}
           />
         ))}
     </div>

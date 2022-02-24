@@ -6,6 +6,9 @@ const Board = ({
   countFields,
   activeFields,
   step = 1,
+  fieldStep=1,
+  disabled=false,
+  onClick
 }) => {
   return (
     <div className="w-[min(25%,100vh)]">
@@ -17,6 +20,9 @@ const Board = ({
         countFields={countFields}
         activeFields={activeFields}
         step={step}
+        fieldStep={fieldStep}
+        disabled={disabled}
+        onClick={onClick}
       />
     </div>
   );
