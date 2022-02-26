@@ -6,7 +6,7 @@ export const colors = {
 }
 
 export function getColor(color, step){
-  return `bg-${color}-${step <= 8 ? `${100+step*100}` : '900'}`
+  return `bg-${color}-${step <= 9 ? `${step*100}` : '800'}`
 }
 
 export function randColor(){

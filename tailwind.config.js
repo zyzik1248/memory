@@ -3,7 +3,22 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        hide: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+        show: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+      animation: {
+        hide: "hide 0.5s ease-in-out",
+        show: "show 1s ease-in-out"
+      },
+    },
   },
   plugins: [],
   purge: {
@@ -22,6 +37,7 @@ module.exports = {
         ...Array(9)
           .fill("")
           .map((el, i) => `bg-blue-${100 + i * 100}`),
+        "hidden",
       ],
     },
   },

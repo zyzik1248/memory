@@ -4,17 +4,17 @@ import Board from "./Board";
 const PreviewBoard = ({
   activeFields,
   color,
-  countFields,
   step,
   finishShow,
+  steps
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  let steps = 0;
+  let countSteps = 0;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      steps++;
-      if (steps > step +1) {
+      countSteps++;
+      if (countSteps > step +1) {
         setCurrentStep(0);
         finishShow && finishShow();
         clearInterval(intervalId);
@@ -29,11 +29,12 @@ const PreviewBoard = ({
   return (
     <Board
       activeFields={currentStep ? [activeFields[currentStep - 1]] : []}
-      countFields={countFields}
+      countFields={16}
       color={color}
       step={step}
       fieldStep={currentStep}
       disabled
+      steps={steps}
     />
   );
 };

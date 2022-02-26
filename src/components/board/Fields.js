@@ -20,7 +20,7 @@ const Fields = ({
             key={index}
             id={index}
             color={color}
-            isActive={activeFields.find((el) => el === index)}
+            isActive={activeFields.find((el) => el === index)!==undefined}
             step={fieldStep}
             disabled={disabled}
             onClick={onClick}

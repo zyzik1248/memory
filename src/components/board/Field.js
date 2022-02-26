@@ -1,6 +1,6 @@
 import { getColor } from "../../utilis";
 
-const Field = ({id, isActive, step = 1, color = "green", disabled = false, onClick }) => {
+const Field = ({id, isActive=false, step = 1, color = "green", disabled = false, onClick }) => {
   const handleClick = () =>{
     onClick && onClick(id)
   }
@@ -14,6 +14,7 @@ const Field = ({id, isActive, step = 1, color = "green", disabled = false, onCli
         disabled={disabled}
         onClick={handleClick}
       />
+      {console.log(isActive)}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import Step from "./Step";
 
-const Steps = ({ color = "green", step }) => {
+const Steps = ({ color = "green", step, steps={steps} }) => {
   return (
     <div className="grid grid-cols-10">
-      {Array(10)
+      {Array(steps)
         .fill("")
         .map((el, index) => (
           <Step
