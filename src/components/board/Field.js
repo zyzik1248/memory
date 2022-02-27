@@ -14,7 +14,6 @@ const Field = ({id, isActive=false, step = 1, color = "green", disabled = false,
         disabled={disabled}
         onClick={handleClick}
       />
-      {console.log(isActive)}
     </div>
   );
 };

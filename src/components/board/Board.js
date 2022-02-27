@@ -16,7 +16,6 @@ const Board = ({
       <div className="mb-4">
         <Steps color={color} step={step} steps={steps} />
       </div>
-      {console.log(activeFields)}
       <Fields
         color={color}
         countFields={countFields}
